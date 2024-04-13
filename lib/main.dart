@@ -103,9 +103,10 @@ class _HomePageState extends State<HomePage> {
                   child: const Text(
                     "Delete",
                     style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
+                      color: Colors.red,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 )
               ],
