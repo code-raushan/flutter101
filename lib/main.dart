@@ -115,7 +115,21 @@ class _HomePageState extends State<HomePage> {
         itemCount: notes.length,
         itemBuilder: (context, index) {
           return Container(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Colors.white, // Container background color
+              borderRadius: BorderRadius.circular(10), // Border radius
+              border: Border.all(color: Colors.grey), // Border color
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5), // Shadow color
+                  spreadRadius: 5, // Spread radius
+                  blurRadius: 7, // Blur radius
+                  offset: const Offset(0, 3), // Offset
+                ),
+              ],
+            ),
             child: Row(
               children: [
                 Expanded(
