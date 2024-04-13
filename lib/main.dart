@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
         ),
         body: const Center(
           child: Text(
-            "Hi",
-            style: TextStyle(color: Colors.green, fontSize: 30),
+            "Welcome to the Notes application",
+            style: TextStyle(color: Colors.green, fontSize: 15),
           ),
         ),
       ),
