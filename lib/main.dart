@@ -50,6 +50,13 @@ class _HomePageState extends State<HomePage> {
                   Navigator.of(context).pop();
                 },
                 child: const Text("Add Note"),
+              ),
+              TextButton(
+                onPressed: () {
+                  _textEditingController.clear();
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Cancel"),
               )
             ]);
       },
