@@ -63,6 +63,42 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _editNoteModal(BuildContext context, int index) {
+    _textEditingController.text = notes[index];
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+            title: const Text("Edit your note"),
+            content: TextField(
+              controller: _textEditingController,
+              decoration: const InputDecoration(
+                hintText: "Enter your note",
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    notes[index] = _textEditingController.text;
+                  });
+                  _textEditingController.clear();
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Save"),
+              ),
+              TextButton(
+                onPressed: () {
+                  _textEditingController.clear();
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Don't save"),
+              )
+            ]);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,11 +114,8 @@ class _HomePageState extends State<HomePage> {
       body: ListView.builder(
         itemCount: notes.length,
         itemBuilder: (context, index) {
-          // return ListTile(
-          //   title: Text(notes[index]),
-          // );
           return Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(15),
             child: Row(
               children: [
                 Expanded(
@@ -94,21 +127,38 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    setState(() {
-                      notes.removeAt(index);
-                    });
-                  },
-                  child: const Text(
-                    "Delete",
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+                Column(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          notes.removeAt(index);
+                        });
+                      },
+                      child: const Text(
+                        "Delete",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                  ),
-                )
+                    TextButton(
+                      onPressed: () {
+                        _editNoteModal(context, index);
+                      },
+                      child: const Text(
+                        "Edit",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           );
