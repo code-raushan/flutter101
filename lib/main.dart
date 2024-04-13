@@ -78,8 +78,38 @@ class _HomePageState extends State<HomePage> {
       body: ListView.builder(
         itemCount: notes.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(notes[index]),
+          // return ListTile(
+          //   title: Text(notes[index]),
+          // );
+          return Container(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    notes[index],
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      notes.removeAt(index);
+                    });
+                  },
+                  child: const Text(
+                    "Delete",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            ),
           );
         },
       ),
